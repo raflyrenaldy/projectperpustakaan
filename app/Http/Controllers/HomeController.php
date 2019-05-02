@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Model\peminjaman;
+use App\Model\pengembalian;
+use App\Model\anggota;
+use App\Model\buku;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $return = pengembalian::all()->count();
+        $borrow = peminjaman::all()->count();
+        $member = anggota::all()->count();
+        $book = buku::all()->count();
+
+        return view('home',compact('return','borrow','member','book'));
     }
 }

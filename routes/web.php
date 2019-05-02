@@ -11,56 +11,51 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('home');
 
 
 // Route::get('/testcode/{id}','borrowController@return');
 
 //member
-Route::get('admin/member','memberController@index')->name('member');
-Route::get('admin/member/create','memberController@create')->name('createmember');
-Route::post('/admin/member/check','memberController@check')->name('nis.check');
-Route::post('admin/member/add','memberController@store')->name('addmember');
-Route::get('admin/member/show/{nis}','memberController@show')->name('detailmember');
-Route::get('admin/member/edit/{nis}','memberController@edit')->name('editmember');
-Route::post('admin/member/edit/{nis}','memberController@update')->name('updatemember');
-Route::delete('admin/member/delete/{nis}','memberController@destroy')->name('deletemember');
+Route::get('member','memberController@index')->name('member');
+Route::get('member/create','memberController@create')->name('createmember');
+Route::post('/member/check','memberController@check')->name('nis.check');
+Route::post('member/add','memberController@store')->name('addmember');
+Route::get('member/show/{nis}','memberController@show')->name('detailmember');
+Route::get('member/edit/{nis}','memberController@edit')->name('editmember');
+Route::post('member/edit/{nis}','memberController@update')->name('updatemember');
+Route::delete('member/delete/{nis}','memberController@destroy')->name('deletemember');
 
 //book
-Route::get('admin/book','bookController@index')->name('book');
-Route::get('admin/book/create','bookController@create')->name('createbook');
-Route::post('admin/book/add','bookController@store')->name('addbook');
-Route::get('admin/book/show/{id}','bookController@show')->name('detailbook');
-Route::get('admin/book/edit/{id}','bookController@edit')->name('editbook');
-Route::post('admin/book/edit/{id}','bookController@update')->name('updatebook');
-Route::delete('admin/book/delete/{id}','bookController@destroy')->name('deletebook');
+Route::get('book','bookController@index')->name('book');
+Route::get('book/create','bookController@create')->name('createbook');
+Route::post('book/add','bookController@store')->name('addbook');
+Route::get('book/show/{id}','bookController@show')->name('detailbook');
+Route::get('book/edit/{id}','bookController@edit')->name('editbook');
+Route::post('book/edit/{id}','bookController@update')->name('updatebook');
+Route::delete('book/delete/{id}','bookController@destroy')->name('deletebook');
 
 //peminjaman
-Route::get('admin/borrow','borrowController@index')->name('borrow');
-Route::get('admin/borrow/create','borrowController@create')->name('createborrow');
-Route::post('admin/borrow/add','borrowController@store')->name('addborrow');
-Route::get('admin/borrow/show/{id}','borrowController@show')->name('detailborrow');
-Route::get('admin/borrow/edit/{id}','borrowController@edit')->name('editborrow');
-Route::post('admin/borrow/edit/{id}','borrowController@update')->name('updateborrow');
-Route::delete('admin/borrow/delete/{id}','borrowController@destroy')->name('deleteborrow');
-Route::post('admin/borrow/edit/book/{id}','borrowController@updatebook')->name('updateloanedbook');
-Route::post('admin/borrow/add/book/{id}','borrowController@addbook')->name('addloanedbook');
-Route::get('admin/borrow/show/{id}/returned','borrowController@returned')->name('returnedbook');
-Route::get('admin/borrow/show/{id}/returned/cancel','borrowController@cancelreturn')->name('cancelreturn');
+Route::get('borrow','borrowController@index')->name('borrow');
+Route::get('borrow/create','borrowController@create')->name('createborrow');
+Route::post('borrow/add','borrowController@store')->name('addborrow');
+Route::get('borrow/show/{id}','borrowController@show')->name('detailborrow');
+Route::get('borrow/edit/{id}','borrowController@edit')->name('editborrow');
+Route::post('borrow/edit/{id}','borrowController@update')->name('updateborrow');
+Route::delete('borrow/delete/{id}','borrowController@destroy')->name('deleteborrow');
+Route::post('borrow/edit/book/{id}','borrowController@updatebook')->name('updateloanedbook');
+Route::post('borrow/add/book/{id}','borrowController@addbook')->name('addloanedbook');
+Route::get('borrow/show/{id}/returned','borrowController@returned')->name('returnedbook');
+Route::get('borrow/show/{id}/returned/cancel','borrowController@cancelreturn')->name('cancelreturn');
 
 //pengembalian
-Route::get('admin/return','returnController@index')->name('return');
-Route::get('admin/return/{id}','borrowController@return')->name('returnbook');
-Route::get('admin/return/book/{id}','borrowController@returnonebook')->name('returnonebook');
-Route::get('admin/return/show/{id}','returnController@show')->name('detailreturn');
-Route::delete('admin/return/delete/{id}','returnController@destroy')->name('deletereturn');
+Route::get('return','returnController@index')->name('return');
+Route::get('return/{id}','borrowController@return')->name('returnbook');
+Route::get('return/book/{id}','borrowController@returnonebook')->name('returnonebook');
+Route::get('return/show/{id}','returnController@show')->name('detailreturn');
+Route::delete('return/delete/{id}','returnController@destroy')->name('deletereturn');
